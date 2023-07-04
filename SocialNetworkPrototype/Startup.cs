@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,7 +38,18 @@ namespace SocialNetworkPrototype
                  opts.Password.RequireDigit = false;
              }).AddEntityFrameworkStores<ApplicationDbContext>();
 
+            var mapperConfig = new MapperConfiguration(options =>
+            {
+                options.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddScoped<IMapper>(provider => new Mapper(mapperConfig, provider.GetService));
+
+            services.AddAuthorization();
             services.AddRazorPages();
+
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,7 +78,9 @@ namespace SocialNetworkPrototype
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

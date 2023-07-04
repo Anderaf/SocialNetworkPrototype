@@ -12,21 +12,21 @@ namespace SocialNetworkPrototype.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private IMapper _mapper;
-        private IUnitOfWork _unitOfWork;
+        //private IUnitOfWork _unitOfWork;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
         public HomeController(ILogger<HomeController> logger, UserManager<User> userManager,
-            SignInManager<User> signInManager, IMapper mapper, IUnitOfWork unitOfWork)
+            SignInManager<User> signInManager, IMapper mapper/*, IUnitOfWork unitOfWork*/)
         {
             _logger = logger;
             _userManager = userManager;
             _signInManager = signInManager;
             _mapper = mapper;
-            _unitOfWork = unitOfWork;
+            //_unitOfWork = unitOfWork;
         }
 
-        [Route("")]
+        /*[Route("")]*/
         [Route("[controller]/[action]")]
         public IActionResult Index()
         {

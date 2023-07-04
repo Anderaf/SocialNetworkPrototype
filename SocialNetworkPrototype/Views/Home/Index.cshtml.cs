@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialNetworkPrototype.Pages
+namespace SocialNetworkPrototype.Views.Home
 {
     public class IndexModel : PageModel
     {
