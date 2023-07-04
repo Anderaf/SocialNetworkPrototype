@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SocialNetworkPrototype.Models.Users;
 
 namespace SocialNetworkPrototype.DataLayer
 {

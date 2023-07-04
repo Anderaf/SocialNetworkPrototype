@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SocialNetworkPrototype.Models.Users;
 using SocialNetworkPrototype.ViewModels.Account;
 using System.Diagnostics;
 

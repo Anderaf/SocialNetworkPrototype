@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SocialNetworkPrototype.Models.Users;
 using SocialNetworkPrototype.ViewModels.Account;
 using System.Threading.Tasks;
 

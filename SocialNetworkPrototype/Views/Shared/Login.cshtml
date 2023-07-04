@@ -4,23 +4,22 @@
 }
 <div class="block-reg background-white">
     <h4 class="center">Добро пожаловать!</h4>
-    <form method="post" asp-controller="AccountManager" asp-action="Login">
+    <form class="frm" method="post" asp-controller="AccountManager" asp-action="Login">
         <div asp-validation-summary="ModelOnly"></div>
         <div>
-            <label asp-for="Email"></label><br />
-            <input asp-for="Email" />
-            <span asp-validation-for="Email"></span>
+            <div class="mrgn">
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
         </div>
         <div>
-            <label asp-for="Password"></label><br />
-            <input asp-for="Password" />
-            <span asp-validation-for="Password"></span>
+            <div class="mrgn">
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
         </div>
         <div>
-            <input type="checkbox" asp-for="RememberMe" value="true"> Да<Br>
-        </div>
-        <div>
-            <input type="submit" value="Войти" />
+            <input class="enter_submit" type="submit" value="Войти" />
         </div>
     </form>
 </div>

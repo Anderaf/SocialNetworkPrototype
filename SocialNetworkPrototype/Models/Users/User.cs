@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 
-namespace SocialNetworkPrototype
+namespace SocialNetworkPrototype.Models.Users
 {
     public class User : IdentityUser
     {
