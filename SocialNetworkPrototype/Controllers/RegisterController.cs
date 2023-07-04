@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SocialNetworkPrototype.Models.Users;
 using SocialNetworkPrototype.ViewModels.Account;
+using System;
 using System.Threading.Tasks;
 
 namespace SocialNetworkPrototype.Controllers
@@ -24,6 +25,7 @@ namespace SocialNetworkPrototype.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
+            Console.WriteLine("Register");
             if (ModelState.IsValid)
             {
                 var user = _mapper.Map<User>(model);
