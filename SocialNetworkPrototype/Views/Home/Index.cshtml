@@ -1,21 +1,30 @@
 ﻿@*@page*@
+﻿@using Microsoft.AspNetCore.Identity;
+@using SocialNetworkPrototype.Models.Users;
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager;
 @model SocialNetworkPrototype.ViewModels.Account.MainViewModel;
 @{
     ViewData["Title"] = "Главная";
 }
 
-<div class="row">
-    <div class="side">
-        <div class="center">
-            Пользуйтесь нашей самой крутой соцсетью! Регистрируйтесь всего за 2 минуты, делитесь мыслями, находите новых друзей.
+@if (SignInManager.IsSignedIn(User))
+{
+    <div>Hello @User.Identity!</div>
+}
+else
+{
+    <div class="row">
+        <div class="side">
+            <div class="center">
+                Пользуйтесь нашей самой крутой соцсетью! Регистрируйтесь всего за 2 минуты, делитесь мыслями, находите новых друзей.
+            </div>
+            <img class="main-img" src="http://pngimg.com/uploads/husky/husky_PNG19.png" />
         </div>
-        <img class="main-img" src="http://pngimg.com/uploads/husky/husky_PNG19.png" />
+
+        <div class="main">
+            <partial name="Login" model="@Model.LoginView" />
+            <partial name="Register" model="@Model.RegisterView" />
+        </div>
     </div>
-
-
-    <div class="main">
-        <partial name="Login" model="Model.LoginView" />
-        <partial name="Register" model="Model.RegisterView" />
-    </div>
-
-</div>
+}
