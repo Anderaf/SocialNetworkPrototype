@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SocialNetworkPrototype.DataLayer.Context;
 using SocialNetworkPrototype.Models.Users;
 
 namespace SocialNetworkPrototype.DataLayer
@@ -11,12 +12,12 @@ namespace SocialNetworkPrototype.DataLayer
             Database.Migrate();
         }
 
-        /*protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
             builder.ApplyConfiguration(new FriendConfiguration());
             builder.ApplyConfiguration(new MessageConfuiguration());
-        }*/
+        }
     }
 }

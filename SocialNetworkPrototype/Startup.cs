@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SocialNetworkPrototype.DataLayer;
+using SocialNetworkPrototype.DataLayer.Context;
+using SocialNetworkPrototype.DataLayer.Repositories;
 using SocialNetworkPrototype.Models.Users;
 using System;
 using System.Collections.Generic;
@@ -46,6 +48,7 @@ namespace SocialNetworkPrototype
 
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddScoped<IMapper>(provider => new Mapper(mapperConfig, provider.GetService));
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             services.AddAuthorization();
             services.AddRazorPages();

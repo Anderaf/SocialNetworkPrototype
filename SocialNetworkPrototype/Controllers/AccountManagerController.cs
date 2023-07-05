@@ -4,22 +4,25 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using SocialNetworkPrototype.ViewModels.Account;
 using SocialNetworkPrototype.Models.Users;
+using System.Collections.Generic;
+using SocialNetworkPrototype.DataLayer;
+using SocialNetworkPrototype.DataLayer.Repositories;
 
 namespace SocialNetworkPrototype.Controllers
 {
     public class AccountManagerController : Controller
     {
         private IMapper _mapper;
-        /*private IUnitOfWork _unitOfWork;*/
+        private IUnitOfWork _unitOfWork;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
-        public AccountManagerController(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper/*, IUnitOfWork unitOfWork*/)
+        public AccountManagerController(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper, IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _mapper = mapper;
-            /*_unitOfWork = unitOfWork;*/
+            _unitOfWork = unitOfWork;
         }
         [Route("Login")]
         [HttpGet]
@@ -58,6 +61,22 @@ namespace SocialNetworkPrototype.Controllers
             }
             //return View("Views/Home/Index.cshtml");
             return RedirectToAction("Index", "Home");
+        }
+        public async Task<IActionResult> MyPage()
+        {
+            var user = User;
+            var result = await _userManager.GetUserAsync(user);
+            var model = new UserViewModel(result);
+            model.Friends = await GetAllFriend(model.User);
+
+            return View("User", model);
+        }
+
+        private async Task<List<User>> GetAllFriend(User user)
+        {
+            var repository = _unitOfWork.GetRepository<Friend>() as FriendsRepository;
+
+            return repository.GetFriendsByUser(user);
         }
 
         [Route("Logout")]
