@@ -11,7 +11,7 @@ namespace SocialNetworkPrototype.DataLayer
         public DbSet<Message> Messages { get; set; }*/
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            Database.Migrate();
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

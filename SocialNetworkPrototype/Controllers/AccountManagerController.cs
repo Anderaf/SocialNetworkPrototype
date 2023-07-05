@@ -7,6 +7,7 @@ using SocialNetworkPrototype.Models.Users;
 using System.Collections.Generic;
 using SocialNetworkPrototype.DataLayer;
 using SocialNetworkPrototype.DataLayer.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SocialNetworkPrototype.Controllers
 {
@@ -62,6 +63,7 @@ namespace SocialNetworkPrototype.Controllers
             //return View("Views/Home/Index.cshtml");
             return RedirectToAction("Index", "Home");
         }
+        [Authorize]
         public async Task<IActionResult> MyPage()
         {
             var user = User;

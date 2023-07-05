@@ -22,7 +22,7 @@ namespace SocialNetworkPrototype.Models.Users
 
         public User()
         {
-            Image = "https://avavatar.ru/images/avatars/5/avatar_evO6s6Sg9cK5Vgk7.jpg";
+            Image = "https://i.ibb.co/9bCtHR6/default-profile-icon-24.jpg";
             Status = "Ура! Я в соцсети!";
             About = "Информация обо мне.";
         }
