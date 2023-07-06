@@ -38,7 +38,7 @@ namespace SocialNetworkPrototype.Models.Users
             About = model.About;
             Email = model.Email;
             UserName = model.UserName;
-            Id = model.UserId;
+            //Id = model.UserId;
         }
     }
 }

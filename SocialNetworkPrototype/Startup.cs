@@ -48,7 +48,19 @@ namespace SocialNetworkPrototype
 
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddScoped<IMapper>(provider => new Mapper(mapperConfig, provider.GetService));
-            /*services.AddSingleton<IMapper>(provider => new Mapper(mapperConfig, provider.GetService));*/
+            services.AddSingleton<IMapper>(provider => new Mapper(mapperConfig, provider.GetService));
+
+            /*var mapperConfig = new MapperConfiguration((v) =>
+            {
+                v.AddProfile(new MappingProfile());
+            });
+
+
+            IMapper mapper = mapperConfig.CreateMapper();
+
+
+            services.AddSingleton(mapper);*/
+
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IRepository<Friend>, FriendsRepository>();
             services.AddTransient<IRepository<Message>, MessageRepository>();

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using SocialNetworkPrototype.DataLayer;
 using SocialNetworkPrototype.DataLayer.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq;
 
 namespace SocialNetworkPrototype.Controllers
 {
@@ -91,13 +92,13 @@ namespace SocialNetworkPrototype.Controllers
         }
         [Route("Edit")]
         [HttpGet]
-        public IActionResult Edit()
+        public async Task<IActionResult> Edit()
         {
             var user = User;
 
-            var result = _userManager.GetUserAsync(user);
+            var result = await _userManager.GetUserAsync(user);
 
-            var editmodel = _mapper.Map<UserEditViewModel>(result.Result);
+            var editmodel = _mapper.Map<UserEditViewModel>(result);
 
             return View("Edit", editmodel);
         }
@@ -127,6 +128,16 @@ namespace SocialNetworkPrototype.Controllers
                 ModelState.AddModelError("", "Некорректные данные");
                 return View("Edit", model);
             }
+        }
+        [Route("UserList")]
+        [HttpPost]
+        public IActionResult UserList(string search)
+        {
+            var model = new SearchViewModel
+            {
+                UserList = _userManager.Users.Where(x => x.GetFullName().Contains(search)).ToList()
+            };
+            return View("UserList", model);
         }
     }
 }
