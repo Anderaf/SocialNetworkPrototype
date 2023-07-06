@@ -1,4 +1,6 @@
-﻿namespace SocialNetworkPrototype.ViewModels.Account
+﻿using SocialNetworkPrototype.ViewModels.Account;
+
+namespace SocialNetworkPrototype.ViewModels
 {
     public class MainViewModel
     {

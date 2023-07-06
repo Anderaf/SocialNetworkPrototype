@@ -1,9 +1,10 @@
 ﻿@*@page*@
 ﻿@using Microsoft.AspNetCore.Identity;
 @using SocialNetworkPrototype.Models.Users;
+@using SocialNetworkPrototype.ViewModels;
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager;
-@model SocialNetworkPrototype.ViewModels.Account.MainViewModel;
+@model MainViewModel;
 @{
     ViewData["Title"] = "Главная";
 }

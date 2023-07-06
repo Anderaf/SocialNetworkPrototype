@@ -40,9 +40,9 @@ namespace SocialNetworkPrototype.Controllers
             {
 
                 /*var user = _mapper.Map<User>(model);*/
-                var user = await _userManager.FindByEmailAsync(model.Email);
-                var result = await _signInManager.PasswordSignInAsync(user.Email, model.Password, model.RememberMe, false);
-                
+                var user = await _userManager.FindByEmailAsync(model.Email); 
+                var result = await _signInManager.PasswordSignInAsync(user, model.Password, true, false);
+
                 if (result.Succeeded)
                 {
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
@@ -88,6 +88,45 @@ namespace SocialNetworkPrototype.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+        [Route("Edit")]
+        [HttpGet]
+        public IActionResult Edit()
+        {
+            var user = User;
+
+            var result = _userManager.GetUserAsync(user);
+
+            var editmodel = _mapper.Map<UserEditViewModel>(result.Result);
+
+            return View("Edit", editmodel);
+        }
+        [Authorize]
+        [Route("Update")]
+        [HttpPost]
+        public async Task<IActionResult> Update(UserEditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByIdAsync(model.UserId);
+
+                user.Convert(model);
+
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("MyPage", "AccountManager");
+                }
+                else
+                {
+                    return RedirectToAction("Edit", "AccountManager");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Некорректные данные");
+                return View("Edit", model);
+            }
         }
     }
 }

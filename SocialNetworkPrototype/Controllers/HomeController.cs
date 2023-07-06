@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SocialNetworkPrototype.Models.Users;
+using SocialNetworkPrototype.ViewModels;
 using SocialNetworkPrototype.ViewModels.Account;
 using System.Diagnostics;
 

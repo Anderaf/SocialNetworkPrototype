@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using SocialNetworkPrototype.ViewModels.Account;
 using System;
 
 namespace SocialNetworkPrototype.Models.Users
@@ -25,6 +26,16 @@ namespace SocialNetworkPrototype.Models.Users
             Image = "https://i.ibb.co/9bCtHR6/default-profile-icon-24.jpg";
             Status = "Ура! Я в соцсети!";
             About = "Информация обо мне.";
+        }
+        public void Convert(UserEditViewModel model)
+        {
+            FirstName = model.FirstName;
+            LastName = model.LastName;
+            MiddleName = model.MiddleName;
+            BirthDate = model.BirthDate;
+            Image = model.Image;
+            Status = model.Status;
+            About = model.About;
         }
     }
 }
