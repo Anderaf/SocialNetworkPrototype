@@ -11,7 +11,8 @@ namespace SocialNetworkPrototype
             CreateMap<RegisterViewModel, User>()
                 .ForMember(x => x.Email, opt => opt.MapFrom(c => c.EmailReg))
                 .ForMember(x => x.UserName, opt => opt.MapFrom(c => c.Login));
-            CreateMap<UserEditViewModel, User>();
+            CreateMap<UserEditViewModel, User>()
+                .ForMember(x => x.Id, opt => opt.MapFrom(c => c.UserId));
         }
     }
 }

@@ -36,6 +36,9 @@ namespace SocialNetworkPrototype.Models.Users
             Image = model.Image;
             Status = model.Status;
             About = model.About;
+            Email = model.Email;
+            UserName = model.UserName;
+            Id = model.UserId;
         }
     }
 }
