@@ -23,7 +23,8 @@ namespace SocialNetworkPrototype.Models.Users
 
         public User()
         {
-            Image = "https://i.ibb.co/9bCtHR6/default-profile-icon-24.jpg";
+            /*Image = "https://i.ibb.co/9bCtHR6/default-profile-icon-24.jpg";*/
+            Image = "https://thispersondoesnotexist.com";
             Status = "Ура! Я в соцсети!";
             About = "Информация обо мне.";
         }
