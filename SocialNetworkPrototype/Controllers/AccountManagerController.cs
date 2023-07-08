@@ -301,7 +301,7 @@ namespace SocialNetworkPrototype.Controllers
             var model = await GenerateChat(id);
             return View("Chat", model);
         }
-        [Route("Generate")]
+        /*[Route("Generate")]
         [HttpGet]
         public async Task<IActionResult> Generate()
         {
@@ -318,6 +318,6 @@ namespace SocialNetworkPrototype.Controllers
             }
 
             return RedirectToAction("Index", "Home");
-        }
+        }*/
     }
 }
